@@ -4,6 +4,7 @@ from sqlalchemy import Column, ForeignKey, Integer, String, Float, DateTime
 from sqlalchemy.orm import relationship
 
 from core.database import Base
+from users.models import User
 
 
 class Wallet(Base):
@@ -17,4 +18,4 @@ class Wallet(Base):
     created_on = Column(DateTime, default=datetime.now)
     modified_on = Column(DateTime, default=datetime.now, onupdate=datetime.now)
     owner = Column(Integer, ForeignKey("users.id"))
-    owner_id = relationship("User")
+    owner_id = relationship(User)
